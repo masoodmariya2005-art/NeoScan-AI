@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neo Scan AI - Register</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url('bg.jpg') no-repeat center center/cover;
+            background-size: cover;
+        }
+        .container {
+            background: rgba(196, 186, 186, 0.9);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            width: 400px;
+            text-align: center;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        .input-field {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .btn {
+            width: 100%;
+            padding: 12px;
+            background: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Create an Account</h1>
+        <input type="text" class="input-field" id="newUsername" placeholder="Choose a Username" required>
+        <input type="password" class="input-field" id="newPassword" placeholder="Choose a Password" required>
+        <button class="btn" onclick="registerUser()">Register</button>
+    </div>
+
+    <script>
+        function registerUser() {
+            const newUsername = document.getElementById('newUsername').value;
+            const newPassword = document.getElementById('newPassword').value;
+
+            if (newUsername === "" || newPassword === "") {
+                alert("Please fill in all fields.");
+                return;
+            }
+
+            if (localStorage.getItem(newUsername)) {
+                alert("Username already exists. Please choose another.");
+            } else {
+                localStorage.setItem(newUsername, newPassword);
+                alert("Registration successful! You can now log in.");
+                window.location.href = 'login.html';
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help - Chatbot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url('bg.jpg') no-repeat center center/cover;
+            background-size: cover;
+        }
+        .help-container {
+            background: rgba(196, 186, 186, 0.9);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            width: 400px;
+            text-align: center;
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        .chatbox {
+            height: 300px;
+            overflow-y: auto;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            background: #f9f9f9;
+            text-align: left;
+        }
+        .user-message {
+            background: #007bff;
+            color: white;
+            padding: 8px;
+            border-radius: 8px;
+            margin: 5px 0;
+            text-align: right;
+        }
+        .bot-message {
+            background: #ddd;
+            padding: 8px;
+            border-radius: 8px;
+            margin: 5px 0;
+            text-align: left;
+        }
+        .input-box {
+            display: flex;
+            margin-top: 10px;
+        }
+        input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px;
+            background: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="help-container">
+        <h1>Help Chatbot</h1>
+        <div class="chatbox" id="chatbox">
+            <div class="bot-message">Hello! How can I assist you today?</div>
+        </div>
+        <div class="input-box">
+            <input type="text" id="userInput" placeholder="Ask me anything..." onkeypress="handleKeyPress(event)">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script>
+        function sendMessage() {
+            var userInput = document.getElementById("userInput").value.trim();
+            if (userInput === "") return;
+
+            var chatbox = document.getElementById("chatbox");
+            
+            var userMessage = document.createElement("div");
+            userMessage.className = "user-message";
+            userMessage.textContent = userInput;
+            chatbox.appendChild(userMessage);
+
+            var botResponse = getBotResponse(userInput);
+
+            var botMessage = document.createElement("div");
+            botMessage.className = "bot-message";
+            botMessage.textContent = botResponse;
+            chatbox.appendChild(botMessage);
+
+            chatbox.scrollTop = chatbox.scrollHeight;
+
+            document.getElementById("userInput").value = "";
+        }
+
+        function getBotResponse(input) {
+            input = input.toLowerCase();
+
+            const responses = {
+                "hello": "Hi there! How can I assist you?",
+                "hi": "Hello! How can I help?",
+                "how to use the web": "Click 'Early Detect' to start, upload patient data, and follow the instructions.",
+                "how to give feedback": "Click on 'Feedback' in the navigation bar and submit your comments.",
+                "how do i log out": "Click the 'Logout' button at the top right of the page.",
+                "what is neo scan ai": "Neo Scan AI helps in early detection of diseases using AI-based analysis.",
+                "how does it work": "Upload your patient data in CSV format, and the AI will analyze and predict possible outcomes.",
+                "how to reset my password": "Go to the login page, click 'Forgot Password?', and follow the instructions.",
+                "how to update my profile": "Navigate to 'Settings' and update your profile information.",
+                "how to contact support": "Click the 'Support' link in the footer or email us at support@neoscanai.com.",
+                "what file formats are supported": "Neo Scan AI supports CSV and Excel file formats for data upload.",
+                "how long does the analysis take": "Typically, the analysis takes about 1-2 minutes, depending on file size.",
+                "is my data secure": "Yes! We use end-to-end encryption to keep your data safe.",
+                "can i access neo scan ai on mobile": "Yes, Neo Scan AI works on mobile browsers.",
+                "do you offer a free trial": "Yes, we offer a 7-day free trial for new users.",
+                "what happens after my trial ends": "After the trial, you can choose a subscription plan to continue using the platform.",
+                "how to delete my account": "You can delete your account from 'Settings' or contact support.",
+                "can i share results with my doctor": "Yes! You can download a PDF report to share with your doctor.",
+                "what if my upload fails": "Ensure your file meets the format requirements, and try again.",
+                "how to change language settings": "Go to 'Settings' and choose your preferred language.",
+                "what browsers are supported": "We recommend Chrome, Firefox, Safari, or Edge.",
+                "how accurate are the predictions": "Our AI models have an accuracy rate of over 90%.",
+                "can i use neo scan ai offline": "No, an internet connection is required.",
+                "do you offer api access": "Yes, reach out to our team for API documentation.",
+                "what is the pricing structure": "Visit the 'Pricing' page for details.",
+                "how to report a bug": "Report issues via 'Feedback' or email jasmine10122005@gmail.com."
+            };
+
+            return responses[input] || "I'm not sure about that. Can you rephrase your question?";
+        }
+
+        function handleKeyPress(event) {
+            if (event.key === "Enter") {
+                sendMessage();
+            }
+        }
+    </script>
+</body>
+</html>

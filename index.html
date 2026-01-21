@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neo Scan AI - Home</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            background: url('bg.jpg') no-repeat center center/cover;
+            background-size: cover;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav button {
+            padding: 15px 25px;
+            font-size: 1.1em;
+            background: linear-gradient(135deg, #00c6ff, #0072ff);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .nav button:hover {
+            background: #0072ff;
+            transform: scale(1.05);
+        }
+
+        .logout-btn {
+            padding: 15px 25px;
+            font-size: 1.1em;
+            background: #ff4d4d;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .logout-btn:hover {
+            background: #e60000;
+            transform: scale(1.05);
+        }
+
+        .container {
+            display: flex;
+            flex: 1;
+            margin: auto;
+            padding: 20px;
+            max-width: 1200px;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .main-content {
+            background: rgba(196, 186, 186, 0.9);
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+            width: 100%;
+            max-width: 900px;
+            color: #fff;
+            animation: fadeIn 0.8s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            color: #0099ff;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            color: #ffcc29;
+            font-size: 1.8em;
+        }
+
+        p, li {
+            color: #000;
+            font-size: 1.2em;
+        }
+
+        .instructions {
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer {
+            margin-top: 30px;
+            font-size: 1em;
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="nav">
+            <button onclick="openPredictionPage()">Early Detect</button>
+            <button onclick="openfeedbackpage()">Feedback</button>
+            <button onclick="openHelpPage()">Help</button>
+            
+        </div>
+        <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+
+    <div class="container">
+        <div class="main-content">
+            <h1>Neo Scan AI</h1>
+            <p>Early Detection for Better Outcomes</p>
+            <h2>Instructions</h2>
+            <div class="instructions">
+                <p>To use the Neo Scan AI application:</p>
+                <ol>
+                    <li>Click on the <strong>"Early Detect"</strong> button to start the process.</li>
+                    <li>Upload your patient data in CSV format.</li>
+                    <li>Click the buttons to predict cancer type and stage.</li>
+                    <li>Review the results displayed below.</li>
+                </ol>
+            </div>
+            <div class="footer">
+                <p>Made by AI AVENGERS</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openPredictionPage() {
+            window.location.href = 'prediction.html';
+        }
+        function openfeedbackpage() {
+    window.location.href = 'feedback.html';
+}
+
+function openHelpPage() {
+    window.location.href = 'help.html';
+}
+        function logout() {
+            window.location.href = 'login.html';
+        }
+    </script>
+</body>
+</html>

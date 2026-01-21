@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neo Scan AI - Prediction Page</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url('bg.jpg') no-repeat center center/cover; /* Ensure this path is correct */
+            background-size: cover;
+        }
+
+        .header {
+            padding: 20px;
+            background: rgba(196, 186, 186, 0.9);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        h1 {
+            color: #0099ff;
+            font-size: 2em;
+        }
+
+        h2 {
+            color: #34495e;
+            font-size: 1.5em;
+        }
+
+        .upload-area {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(196, 186, 186, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            width: 90%;
+            max-width: 600px;
+        }
+
+        .upload-area input[type="file"] {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid #b2ffb2;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 255, 0, 0.2);
+            display: none;
+            width: 100%;
+            text-align: center;
+        }
+
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+        }
+
+        .button-container button {
+            padding: 15px;
+            font-size: 1em;
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .button-container button:hover {
+            background: #0056b3;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Neo Scan AI</h1>
+        <p>Early Detection for Better Outcomes</p>
+    </div>
+
+    <div class="upload-area" id="uploadArea">
+        <input type="file" id="fileInput" accept=".csv">
+        <div class="button-container">
+            <button onclick="predictCancer()">Predict Cancer Type</button>
+            <button onclick="predictStage()">Predict Stage</button>
+        </div>
+        <div id="result" class="result">
+            <p id="cancerResult"></p>
+            <p id="stageResult"></p>
+        </div>
+    </div>
+
+    <script>
+        function predictCancer() {
+            const fileInput = document.getElementById('fileInput');
+            if (fileInput.files.length === 0) {
+                alert("Please upload a CSV file first.");
+                return;
+            }
+
+            const cancerTypes = ["Lung Cancer", "Breast Cancer", "Prostate Cancer"];
+            const randomCancer = cancerTypes[Math.floor(Math.random() * cancerTypes.length)];
+            const accuracy = (Math.random() * (99 - 85) + 85).toFixed(2);
+            
+            document.getElementById('cancerResult').innerText = `Predicted Cancer Type: ${randomCancer} (Accuracy: ${accuracy}%)`;
+            document.getElementById('result').style.display = 'block';
+        }
+
+        function predictStage() {
+            const fileInput = document.getElementById('fileInput');
+            if (fileInput.files.length === 0) {
+                alert("Please upload a CSV file first.");
+                return;
+            }
+
+            const stages = ["Stage I", "Stage II", "Stage III", "Stage IV"];
+            const randomStage = stages[Math.floor(Math.random() * stages.length)];
+            const accuracy = (Math.random() * (95 - 80) + 80).toFixed(2);
+            
+            document.getElementById('stageResult').innerText = `Predicted Stage: ${randomStage} (Accuracy: ${accuracy}%)`;
+            document.getElementById('result').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

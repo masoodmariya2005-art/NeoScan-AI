@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neo Scan AI - Login</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url('bg.jpg') no-repeat center center/cover;
+            background-size: cover;
+        }
+        .container {
+            background: rgba(196, 186, 186, 0.9);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            width: 400px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .container:hover {
+            transform: scale(1.02);
+        }
+        .logo {
+            max-width: 150px; /* Set smaller width */
+            height: auto;
+            margin-bottom: 20px;
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        .input-field {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .btn {
+            width: 100%;
+            padding: 12px;
+            background: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+        .btn:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .continue-link {
+            display: block;
+            margin-top: 15px;
+            color: #0056b3;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .continue-link:hover {
+            color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="D:\NeoScanAi\logo.png" alt="Neo Scan AI Logo" class="logo">
+        <h1>Welcome to Neo Scan AI</h1>
+        <input type="text" class="input-field" id="username" placeholder="Username or Email" required>
+        <input type="password" class="input-field" id="password" placeholder="Password" required>
+        <button class="btn" onclick="login()">Login</button>
+        
+        <a href="register.html" class="continue-link">New user? Register</a>
+        <a href="index.html" class="continue-link">Continue without an account</a>
+    </div>
+
+    <script>
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const storedPassword = localStorage.getItem(username);
+
+            if (username === "" || password === "") {
+                alert("Please enter both username and password.");
+                return;
+            }
+
+            if (storedPassword && storedPassword === password) {
+                alert("Login successful!");
+                window.location.href = 'index.html';
+            } else {
+                alert("Invalid username or password.");
+            }
+        }
+    </script>
+</body>
+</html>
